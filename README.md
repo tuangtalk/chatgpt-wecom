@@ -43,7 +43,8 @@ WEIXIN_PUSH:
   secret: XXXXX
   corpid: XXXXX
 #   media_id: media_id
-ChatgptModel: text-davinci-002
+ChatgptModel: text-davinci-003
+#ChatgptModel: text-davinci-002 可以使用gtp-2 比较稳定但是不太智能
 ```
 
 - 第一项`OPENAI_API_KEY` 其中 userA,userB,userC 改成企业微信用户账号,xxxx 填从 openai 中获取的密钥。
