@@ -56,6 +56,6 @@ ChatgptModel: text-davinci-003
   `agentid`,`secret`分别为为企业微信自建 bot 的 id,和 secret,`corpid`则依旧是企业 id, 获取填入数据[教程](https://www.pushplus.plus/doc/extend/cp.html#%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4%E5%A6%82%E4%B8%8B)
   //////////
 - 第四项 `ChatgptModel`是 chatgpt 模型,泄露的模型已经撤销了,gpt-3 非常不稳定,因此使用的为 gpt-2,如果你发现了更好的模型可以更改。
-- (如果是在服务器部署则不需要)最后一步需要一个 http 代理, 因为企业微信目前需要可信任 ip ,nas 的动态 ip 经常变更,因此需要在 docker 创建时的环境变量中填入 http 代理,微信可信任域名中填入对应的代理 ip,如图我的 http 代理为`http://10.0.0.45:8888`对应的服务器 ip 为`54.xxx.xxx.xxx`我在企业微信中加入可信任 ip``54.xxx.xxx.xxx`即可,有关代理搭建和如何在 docker run 时添加环境变量请善用搜索。
+- (如果是在vps部署则，直接在企业微信可信任域名中填入对应的vps ip，不需要再配置http代理)最后一步需要一个 http 代理, 因为企业微信目前需要可信任 ip ,nas 的动态 ip 经常变更,因此需要在 docker 创建时的环境变量中填入 http 代理,微信可信任域名中填入对应的代理 ip,如图我的 http 代理为`http://10.0.0.45:8888`对应的服务器 ip 为`54.xxx.xxx.xxx`我在企业微信中加入可信任 ip``54.xxx.xxx.xxx`即可,有关代理搭建和如何在 docker run 时添加环境变量请善用搜索。
   <a href="https://sm.ms/image/ehZ7JEHQA6c53xm" target="_blank"><img src="https://s2.loli.net/2023/02/10/ehZ7JEHQA6c53xm.png" ></a>
   <a href="https://sm.ms/image/cz7yPgkrJLl2I1q" target="_blank"><img src="https://s2.loli.net/2023/02/10/cz7yPgkrJLl2I1q.png" ></a> #####最后 docker 跑起来后填入可信任 ip 与完成上面的 api 接收信息就可以正常使用了。
