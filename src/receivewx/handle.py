@@ -1,7 +1,6 @@
 import web
 from receivewx.WXBizMsgCrypt import WXBizMsgCrypt
 import yaml
-from revChatGPT.Official import Chatbot
 import xml.etree.ElementTree as ET
 import requests
 import json
@@ -42,16 +41,18 @@ class Handle(object):
         except Exception as Argument:
             print(Argument)
     #回调API调用是post
-    def POST(self):
+    def POST(self,webinput,webdata):
         try:
+            data=webinput
             # print("question")
-            data = web.input()
+            # data = web.input()
             if len(data) == 0:
                 return "no data"
             sReqMsgSig = data.msg_signature
             sReqTimeStamp = data.timestamp
             sReqNonce = data.nonce
-            sReqData = web.data()
+            sReqData = webdata
+            # sReqData = web.data()
             if len(sReqData) == 0:
                 return "hello, this is handle view"
             wxcpt=WXBizMsgCrypt(self.sToken,self.sEncodingAESKey,self.sCorpID)
@@ -100,6 +101,5 @@ class Handle(object):
             # print(xml_tree)
             return question,wxuser     
         except Exception as Argument:
-            print("1111")
             print(Argument)
             return(Argument)

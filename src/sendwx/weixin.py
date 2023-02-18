@@ -12,6 +12,15 @@ with open("src/config/data.yml","r") as f:
 class WeChat():
     def __init__(self):
         try:
+            if "weixinpush_proxy" in datayml["PROXY"]:
+                PROXY=datayml["PROXY"]
+                proxies = {
+                "http": PROXY["weixinpush_proxy"],
+                "https": PROXY["weixinpush_proxy"],
+                }
+                self.proxies=proxies
+            else:
+                self.proxies=""
             self.agentid = WEIXIN_PUSH['agentid']
             self.secret = WEIXIN_PUSH['secret']
             self.corpid = WEIXIN_PUSH['corpid']
@@ -126,7 +135,7 @@ class WeChat():
         access_token = self.get_access_token()
         json_str = json.dumps(dict)
         res = requests.post(
-            f"https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={access_token}", data=json_str)
+            f"https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={access_token}", data=json_str,proxies=self.proxies)
         # print(json.loads(res.text))
         print(res)
         return json.loads(res.text)

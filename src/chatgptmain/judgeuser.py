@@ -1,5 +1,5 @@
 from chatgptmain.Chatgpt import Chatgptwx
-from revChatGPT.Official import Chatbot
+# from revChatGPT.Official import Chatbot
 
 class Judgeuser():
     # 判断用户是否存在已经创建好的chatgpt实例
@@ -19,6 +19,7 @@ class Judgeuser():
     #    print(client)
        return client,False
 
+
    def xml_load(self):
        print("初始化init",self.name)
 
@@ -26,9 +27,15 @@ class Judgeuser():
    def newChatgpt(self,wxuser):
         try:
             newchatbot=Chatgptwx().NewChatgptFromeuser(wxuser)
+            # newchatbot.co
+            # convo_id
             self.chatbot=newchatbot
             # print("创建成功返回")
             return newchatbot
         except Exception as Argument:
             return False
+#    def delChatgpt(cls,wxuser):
+#         print(cls._loaded)
+#         cls._loaded.pop(wxuser)
+#         print(cls._loaded)
     
