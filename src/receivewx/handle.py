@@ -70,6 +70,7 @@ class Handle(object):
             content =  xml_tree.find("Content").text
             question=str(content)
             wxuser=str(FromUserName)
+            print("[ wecom -> chatgpt ] " + question)
             # ask=str(chatgptwx().send_to_chagpt(question))
             # print(ask)
             # message_list=[ask]

@@ -34,7 +34,8 @@ def sendtogpt(webinput,webdata):
             ask=Chatgptwx().send_gpt(question, wxuser, chatbot)
             # ask=str(chatgptwx().send_to_chagpt(question,wxuser))
             # lstripask=str.lstrip(ask)
-            print(str.lstrip(ask))
+            # print(str.lstrip(ask))
+            print("[ chatgpt -> wecom ] " + str.lstrip(ask))
             message_list=[str.lstrip(ask)]
             # print(ask)
             WeChat().send_text(message_list, wxuser)
