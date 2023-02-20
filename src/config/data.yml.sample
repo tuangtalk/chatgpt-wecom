@@ -1,0 +1,15 @@
+OPENAI_ACCOUNT:
+  userA:
+    email: xxx
+    password: xxx
+WEIXIN_RECEIVE:
+  Token: xxx
+  EncodingAESKey: xxx
+  CorpID: xxx
+WEIXIN_PUSH:
+  agentid: xxx
+  secret: xxx
+  corpid: xxx
+PROXY:
+  openai_proxy:
+  weixinpush_proxy:

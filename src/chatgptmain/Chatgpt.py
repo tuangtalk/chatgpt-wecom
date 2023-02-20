@@ -29,11 +29,17 @@ class Chatgptwx():
         if wxuser in datayml["OPENAI_ACCOUNT"]:
             user=datayml["OPENAI_ACCOUNT"][wxuser]
             try:
-                chatbot=Chatbot(config={
-                    "email": user["email"],
-                    "password": user["password"],
-                    "proxy":self.proxies
-                })
+                if None == self.proxies:
+                    chatbot=Chatbot(config={
+                        "email": user["email"],
+                        "password": user["password"]
+                    })
+                else:
+                    chatbot=Chatbot(config={
+                        "email": user["email"],
+                        "password": user["password"],
+                        "proxy":self.proxies
+                    })
                 return chatbot
             except Exception as Argument:
                 if str(Argument) == "'accessToken'":
