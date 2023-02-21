@@ -29,9 +29,15 @@ class judgeChatpt():
             except Exception as Argument:
                 return False
         else:
-            try:
+            if None ==botloaded.chatbot:
+                print("程序出错已经存在用户wxuser,但是对应的机器人实例不存在，将重新创建一次")
+                try:
+                    botloaded.newChatgpt(wxuser)
+                    botloaded.chatbot
+                    print(botloaded.chatbot)
+                    return botloaded.chatbot
+                except Exception as Argument:
+                    return False
+            else:
                 print(botloaded.chatbot)
                 return botloaded.chatbot
-            except Exception as e:
-                print("程序出错已经存在用户wxuser,但是对应的机器人实例不存在")
-                return False

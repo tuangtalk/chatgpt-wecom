@@ -4,8 +4,6 @@ import yaml
 import json
 from sendwx.weixin import WeChat 
 
-
-
 with open("src/config/data.yml","r") as f:
     datayml=yaml.load(f.read(),Loader=yaml.Loader)
     # OPENAI_ACCOUNT=datayml["OPENAI_ACCOUNT"]
@@ -27,25 +25,40 @@ class Chatgptwx():
     #创建一个机器人
     def NewChatgptFromeuser(self,wxuser):
         if wxuser in datayml["OPENAI_ACCOUNT"]:
-            user=datayml["OPENAI_ACCOUNT"][wxuser]
-            try:
+            if "access_token" in datayml["OPENAI_ACCOUNT"][wxuser]:
+                access_token=datayml["OPENAI_ACCOUNT"][wxuser]["access_token"]
+                print(wxuser+"使用access_token登录")
                 if None == self.proxies:
                     chatbot=Chatbot(config={
-                        "email": user["email"],
-                        "password": user["password"]
+                        "access_token": access_token,
                     })
                 else:
                     chatbot=Chatbot(config={
-                        "email": user["email"],
-                        "password": user["password"],
+                        "access_token": access_token,
                         "proxy":self.proxies
                     })
                 return chatbot
-            except Exception as Argument:
-                if str(Argument) == "'accessToken'":
-                    print("请添加可以正常访问chatgpt的代理")
-                exit()
-                return "error"
+            else:
+                user=datayml["OPENAI_ACCOUNT"][wxuser]
+                print(wxuser+"使用账户密码登录")
+                try:
+                    if None == self.proxies:
+                        chatbot=Chatbot(config={
+                            "email": user["email"],
+                            "password": user["password"]
+                        })
+                    else:
+                        chatbot=Chatbot(config={
+                            "email": user["email"],
+                            "password": user["password"],
+                            "proxy":self.proxies
+                        })
+                    return chatbot
+                except Exception as Argument:
+                    if str(Argument) == "'accessToken'":
+                        print("请添加可以正常访问chatgpt的代理")
+                    exit()
+                    return "error"
         else:
             message_list=[str.lstrip("请联系管理员为您添加chatgpt账户")]
             WeChat().send_text(message_list, wxuser)

@@ -1,6 +1,6 @@
 import os
 import web
-from flask import request
+import request
 from receivewx.handle import Handle
 from sendwx.weixin import WeChat 
 from chatgptmain.judgeChatgpt import judgeChatpt
@@ -52,5 +52,4 @@ class Request(object):
         webdata=web.data()
         t = threading.Thread(target=sendtogpt,args=(webinput,webdata,))
         t.start()
-        
     
