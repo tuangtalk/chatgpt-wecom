@@ -78,7 +78,7 @@ PROXY:
 - 第四项`PROXY`则是用于配置 chatgpt 和者企业微信代理。(vps 部署且并且 vps 的 ip 可以正常访问 chatgpt 的用户不需要，`PROXY`(不能删除),子项可删除)
   默认还是在 docker 创建时的环境变量中填入 http 代理，将`PROXY`(不能删除)下子项目删除，再遇到 chatgpt 账户登陆问题或者是需要改微信可信代理 ip 时填入需要的子项，
 - 配置代理和可信 ip 参考(vps 用户也要在企业微信添加可信 ip):
-  最后一步需要一个 http 代理, 因为企业微信目前需要可信任 ip ,nas 的动态 ip 经常变更,因此需要在 docker 创建时的环境变量中填入 http 代理,微信可信任域名中填入对应的代理 ip,如图我的 http 代理为`http://10.0.0.45:8888`对应的服务器(图片错误 应该填HTTP_PROXY	http://10.0.0.45:8888和HTTPS_PROXY:http://10.0.0.45:8888 两项) ip 为`54.xxx.xxx.xxx`我在企业微信中加入可信任 ip``54.xxx.xxx.xxx`即可,有关代理搭建和如何在 docker run 时添加环境变量请善用搜索。
+  最后一步需要一个 http 代理, 因为企业微信目前需要可信任 ip ,nas 的动态 ip 经常变更,因此需要在 docker 创建时的环境变量中填入 http 代理,微信可信任域名中填入对应的代理 ip,如图我的 http 代理为`http://10.0.0.45:8888`对应的服务器(图片错误ALL_PROXY会有部分服务不能代理，应该填HTTP_PROXY	: http://10.0.0.45:8888和HTTPS_PROXY: http://10.0.0.45:8888 两项) ip 为`54.xxx.xxx.xxx`我在企业微信中加入可信任 ip``54.xxx.xxx.xxx`即可,有关代理搭建和如何在 docker run 时添加环境变量请善用搜索。
   <a href="https://sm.ms/image/ehZ7JEHQA6c53xm" target="_blank"><img src="https://s2.loli.net/2023/02/10/ehZ7JEHQA6c53xm.png" ></a>
   <a href="https://sm.ms/image/cz7yPgkrJLl2I1q" target="_blank"><img src="https://s2.loli.net/2023/02/10/cz7yPgkrJLl2I1q.png" ></a>
 
