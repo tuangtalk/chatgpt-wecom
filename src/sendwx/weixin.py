@@ -12,7 +12,7 @@ with open("src/config/data.yml","r") as f:
 class WeChat():
     def __init__(self):
         try:
-            if "weixinpush_proxy" in datayml["PROXY"]:
+            if "weixinpush_proxy" in datayml:
                 PROXY=datayml["PROXY"]
                 proxies = {
                 "http": PROXY["weixinpush_proxy"],
