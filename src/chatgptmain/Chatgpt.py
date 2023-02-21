@@ -43,13 +43,11 @@ class Chatgptwx():
                 print(wxuser+"使用账户密码登录")
                 try:
                     if None == self.proxies:
-                        print("aaa")
                         chatbot=Chatbot(config={
                             "email": user["email"],
                             "password": user["password"]
                         })
                     else:
-                        print("bbb")
                         chatbot=Chatbot(config={
                             "email": user["email"],
                             "password": user["password"],
