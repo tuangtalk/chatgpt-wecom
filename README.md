@@ -19,6 +19,9 @@
 - 企业微信账号
 - 自建 http 代理(服务器部署用户不需要)，
 - 可以使用 chatgpt 的账户
+### 建议大家使用access_token登录，账户登录阻断非常严重使用体验很差
+    页面登录chatgpt后在此[页面](https://chat.openai.com/api/auth/session)获取
+  
 
 ### 获取 OpenAI 账户
 
