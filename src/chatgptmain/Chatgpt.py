@@ -11,7 +11,7 @@ with open("src/config/data.yml","r") as f:
 class Chatgptwx():
     def __init__(self):
         try:
-            if "openai_proxy" in datayml["PROXY"]:
+            if "openai_proxy" in datayml:
                 PROXY=datayml["PROXY"]
                 proxies = PROXY["openai_proxy"]
                 self.proxies=proxies
@@ -43,15 +43,18 @@ class Chatgptwx():
                 print(wxuser+"使用账户密码登录")
                 try:
                     if None == self.proxies:
+                        print("aaa")
                         chatbot=Chatbot(config={
                             "email": user["email"],
                             "password": user["password"]
                         })
                     else:
+                        print("bbb")
                         chatbot=Chatbot(config={
                             "email": user["email"],
                             "password": user["password"],
                             "proxy":self.proxies
+                            
                         })
                     return chatbot
                 except Exception as Argument:
