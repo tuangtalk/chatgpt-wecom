@@ -40,7 +40,7 @@ OPENAI_ACCOUNT:
   userA:
     email: xxxx
     password: xxxx
-    access_token:xxxx
+    access_token: xxxx
     #access_token和账户秘密二选一即可，优先使用账户密码
   userB:
     email: xxxx
