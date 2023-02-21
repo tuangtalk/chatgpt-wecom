@@ -2,6 +2,7 @@ OPENAI_ACCOUNT:
   userA:
     email: xxx
     password: xxx
+    access_token: xxxx
 WEIXIN_RECEIVE:
   Token: xxx
   EncodingAESKey: xxx
