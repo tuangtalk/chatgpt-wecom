@@ -9,14 +9,15 @@
 #### 实现的功能
 
 - 多用户使用隔离,一个用户一个账号
+- 支持使用 access_token登录
 - 支持上下文关联
 - 支持用户清除上下文，开始新的对话
 - 支持 chatgpt 登录 和微信推送分别使用不同的代理(由于登录 chatgpt 账户比较挑代理，所以代理分出来)
 
 #####需要准备的!!!!!!!!
-
+###对于代理或者vps网络的要求较高，如果网络差使用体验会差很多
 - 企业微信账号
-- 自建 http 代理(服务器部署用户不需要)
+- 自建 http 代理(服务器部署用户不需要)，
 - 可以使用 chatgpt 的账户
 
 ### 获取 OpenAI 账户
@@ -39,6 +40,8 @@ OPENAI_ACCOUNT:
   userA:
     email: xxxx
     password: xxxx
+    access_token:xxxx
+    #access_token和账户秘密二选一即可，优先使用账户密码
   userB:
     email: xxxx
     password: xxxx
