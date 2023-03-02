@@ -1,82 +1,33 @@
 
-from revChatGPT.V1 import Chatbot
+from revChatGPT.V3 import Chatbot
 import yaml
+from func_timeout import func_set_timeout
 import json
 from sendwx.weixin import WeChat 
 
 with open("src/config/data.yml","r") as f:
     datayml=yaml.load(f.read(),Loader=yaml.Loader)
-    # OPENAI_ACCOUNT=datayml["OPENAI_ACCOUNT"]
-        # ChatgptModel=datayml["ChatgptModel"]
+
 class Chatgptwx():
-    def __init__(self):
-        try:
-            if "openai_proxy" in datayml:
-                PROXY=datayml["PROXY"]
-                proxies = PROXY["openai_proxy"]
-                self.proxies=proxies
-            else:
-                self.proxies=""
-            # self.ChatgptModel = ChatgptModel
-            # self.OPENAI_ACCOUNT = OPENAI_ACCOUNT
-        except Exception as e:
-            print(e)
-            return "请检查data.yml"
     #创建一个机器人
     def NewChatgptFromeuser(self,wxuser):
-        if wxuser in datayml["OPENAI_ACCOUNT"]:
-            if "access_token" in datayml["OPENAI_ACCOUNT"][wxuser]:
-                access_token=datayml["OPENAI_ACCOUNT"][wxuser]["access_token"]
-                print(wxuser+"使用access_token登录")
-                if None == self.proxies:
-                    chatbot=Chatbot(config={
-                        "access_token": access_token,
-                    })
-                else:
-                    chatbot=Chatbot(config={
-                        "access_token": access_token,
-                        "proxy":self.proxies
-                    })
-                return chatbot
-            else:
-                user=datayml["OPENAI_ACCOUNT"][wxuser]
-                print(wxuser+"使用账户密码登录")
-                try:
-                    if None == self.proxies:
-                        chatbot=Chatbot(config={
-                            "email": user["email"],
-                            "password": user["password"]
-                        })
-                    else:
-                        chatbot=Chatbot(config={
-                            "email": user["email"],
-                            "password": user["password"],
-                            "proxy":self.proxies
-                            
-                        })
-                    return chatbot
-                except Exception as Argument:
-                    if str(Argument) == "'accessToken'":
-                        print("请添加可以正常访问chatgpt的代理")
-                    exit()
-                    return "error"
-        else:
-            message_list=[str.lstrip("请联系管理员为您添加chatgpt账户")]
-            WeChat().send_text(message_list, wxuser)
-            print("请为"+wxuser+"添加chatgpt账户")
-            exit()
-    #发送信息
-    def send_gpt(self,question,wxuser,chatbot):
-    # print (Chatgptwx().NewChatgptFromeuser())
         try:
-            for data in chatbot.ask(question):
-                response = data["message"]
-            # response = chatbot.ask(question,user=wxuser)
-            # print(response["choices"][0]["text"])
-            # return response["choices"][0]["text"]
-            # print(chatbot.conversation_id)
-            return response
-        except Exception as Argument:
-            print("向chatgpt发送信息返回失败")
-            response=Argument
-            return response
+            Api_key=datayml["OPENAI_ACCOUNT"][wxuser]["Api_key"]
+        except Exception as e:
+            print("data.yml Wrong parame"+str(e))
+            exit()
+        chatbot = Chatbot(api_key=Api_key)
+        return chatbot
+    #发送信息
+    @func_set_timeout(60)
+    def send_gpt(self,question,wxuser,chatbot):
+            try:
+                response=chatbot.ask(question,"system")
+                return response
+            except Exception as e:
+                if "Incorrect API key provided" in str(e):
+                    print( "Incorrect API key provided")
+                    return "请联系管理员为你添加正确的密钥"
+                else :
+                    return e
+                

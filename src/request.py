@@ -1,48 +1,40 @@
-import os
 import web
-import request
 from receivewx.handle import Handle
 from sendwx.weixin import WeChat 
 from chatgptmain.judgeChatgpt import judgeChatpt
 from chatgptmain.judgeuser import Judgeuser
 from chatgptmain.Chatgpt import Chatgptwx
+from func_timeout import func_set_timeout
+import func_timeout
 import threading
 def sendtogpt(webinput,webdata):
         try:
             question,wxuser=Handle().POST(webinput,webdata)
             if question == "//新对话":
-                chatbot=judgeChatpt().judgeChatptfuction(wxuser)
-                print(chatbot.conversation_id)
-                if chatbot.conversation_id is None:
-                    message_list=[str.lstrip("您还未开始对话,请先开始对话")]
+                botloaded,panduan=Judgeuser(wxuser)
+                botloaded.newChatgpt(wxuser)
+                botloaded.chatbot
+                message_list=[str.lstrip("上下文已清除，以下是新的对话")]
+                WeChat().send_text(message_list, wxuser)
+                exit()
+            chatbot=judgeChatpt().judgeChatptfuction(wxuser)
+            try:
+                ask=Chatgptwx().send_gpt(question, wxuser, chatbot)
+            except func_timeout.exceptions.FunctionTimedOut as e:
+                try:
+                    botloaded,panduan=Judgeuser(wxuser)
+                    botloaded.newChatgpt(wxuser)
+                    ask=Chatgptwx().send_gpt(question, wxuser, botloaded.chatbot)
+                except func_timeout.exceptions.FunctionTimedOut as e:
+                    message_list=[str.lstrip("超时请联系管理员")]
                     WeChat().send_text(message_list, wxuser)
                     exit()
-                else:
-                    try:
-                        chatbot.delete_conversation(chatbot.conversation_id)
-                        botloaded,panduan=Judgeuser(wxuser)
-                        botloaded.newChatgpt(wxuser)
-                        botloaded.chatbot
-                        message_list=[str.lstrip("上下文已清除，以下是新的对话")]
-                        WeChat().send_text(message_list, wxuser)
-                    except Exception as Argument:
-                        message_list=[str.lstrip("对话清除失败,请重试")]
-                        WeChat().send_text(message_list, wxuser)
-                        exit()
-                    exit()
-            chatbot=judgeChatpt().judgeChatptfuction(wxuser)
-            ask=Chatgptwx().send_gpt(question, wxuser, chatbot)
-            # ask=str(chatgptwx().send_to_chagpt(question,wxuser))
-            # lstripask=str.lstrip(ask)
-            # print(str.lstrip(ask))
             print("[ chatgpt -> wecom ] " + str.lstrip(ask))
             message_list=[str.lstrip(ask)]
-            # print(ask)
             WeChat().send_text(message_list, wxuser)
-            exit(0)
-            return
         except Exception as Argument:
-            return (Argument)
+            print(Argument)
+            exit(0)
 class Request(object):
     def GET(self):
         sEchoStr=Handle().GET()

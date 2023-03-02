@@ -12,11 +12,11 @@ with open("src/config/data.yml","r") as f:
 class WeChat():
     def __init__(self):
         try:
-            if "weixinpush_proxy" in datayml:
-                PROXY=datayml["PROXY"]
+            if "WEXIN_PROXY" in datayml:
+                PROXY=datayml["WEXIN_PROXY"]
                 proxies = {
-                "http": PROXY["weixinpush_proxy"],
-                "https": PROXY["weixinpush_proxy"],
+                "http": PROXY,
+                "https": PROXY,
                 }
                 self.proxies=proxies
             else:
@@ -136,10 +136,4 @@ class WeChat():
         json_str = json.dumps(dict)
         res = requests.post(
             f"https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={access_token}", data=json_str,proxies=self.proxies)
-        # print(json.loads(res.text))
-        print(res)
         return json.loads(res.text)
-        # if json.loads(res.text)['errmsg'] == 'ok':
-        #     return "ok"
-        # else:
-        #     return res.text

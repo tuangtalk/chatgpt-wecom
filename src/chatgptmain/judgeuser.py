@@ -1,9 +1,5 @@
 from chatgptmain.Chatgpt import Chatgptwx
-# from revChatGPT.Official import Chatbot
-
 class Judgeuser():
-    # 判断用户是否存在已经创建好的chatgpt实例
-   ##定义类实例化对象字典，即不同的实例对象对应不同的对象空间地址引用
    _loaded = {}
    def __init__(self,name):
        self.name = name
@@ -18,24 +14,11 @@ class Judgeuser():
        cls._loaded[name] = client
     #    print(client)
        return client,False
-
-
    def xml_load(self):
        print("初始化init",self.name)
 
     #为用户创建一个Chagpt实例
    def newChatgpt(self,wxuser):
-        try:
-            newchatbot=Chatgptwx().NewChatgptFromeuser(wxuser)
-            # newchatbot.co
-            # convo_id
-            self.chatbot=newchatbot
-            # print("创建成功返回")
-            return newchatbot
-        except Exception as Argument:
-            return False
-#    def delChatgpt(cls,wxuser):
-#         print(cls._loaded)
-#         cls._loaded.pop(wxuser)
-#         print(cls._loaded)
+        newchatbot=Chatgptwx().NewChatgptFromeuser(wxuser)
+        self.chatbot=newchatbot
     
