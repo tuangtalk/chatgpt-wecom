@@ -1,6 +1,6 @@
 # chatgpt-WeCom
 
-### V0.12 版本使用 acheong08 的 ChatGPT V1，实现了企业微信与 ChatGPT 聊天。
+### V0.14 版本使用 acheong08 的 ChatGPT V1，实现了企业微信与 ChatGPT 聊天。
 
 ### 这个版本使用的真正的 chatgpt 而不再是 gpt-3，不知道什么时候会和谐（acheong08 的 ChatGPT 原因），所以建议大家保留 v0.11 版本，新建一个 docker 和企业微信 bot 使用，v0.11 版本教程请看 wiki 文件夹
 
