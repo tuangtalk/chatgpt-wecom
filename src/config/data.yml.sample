@@ -1,16 +1,17 @@
 OPENAI_ACCOUNT:
   userA:
-    email: xxx
-    password: xxx
-    access_token: xxxx
+    Api_key: xxxx
+  userB:
+    Api_key: xxxx
+  userC:
+    Api_key: xxxx
 WEIXIN_RECEIVE:
-  Token: xxx
-  EncodingAESKey: xxx
-  CorpID: xxx
+  Token: XXXX
+  EncodingAESKey: XXXX
+  CorpID: XXX
 WEIXIN_PUSH:
-  agentid: xxx
-  secret: xxx
-  corpid: xxx
-PROXY:
-  openai_proxy:
-  weixinpush_proxy:
+  agentid: XXX
+  secret: XXXX
+  corpid: XXX
+WEXIN_PROXY: http://domain:port
+#WEXIN_PROXY为可选配置，配置登录微信推送所用的ip，企业bot可信ip里填的,VPS部署用户用不到可以删除
