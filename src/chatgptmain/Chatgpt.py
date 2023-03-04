@@ -22,7 +22,7 @@ class Chatgptwx():
     @func_set_timeout(60)
     def send_gpt(self,question,wxuser,chatbot):
             try:
-                response=chatbot.ask(question,"system")
+                response=chatbot.ask(question)
                 return response
             except Exception as e:
                 if "Incorrect API key provided" in str(e):
