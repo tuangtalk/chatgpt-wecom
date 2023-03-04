@@ -47,7 +47,6 @@ def sendtogpt(webinput,webdata):
                         while end >= start and ask_bytes[end] & 0xC0 == 0x80:
                             end -= 1
                     sub_string = ask_bytes[start:end].decode('utf-8')
-                    print(sub_string.encode('utf-8').__len__())
                     message_list=f"Part {i}: {sub_string}"
                     print("[ chatgpt -> wecom ] " + message_list)
                     i=i+1
