@@ -68,7 +68,8 @@ class WeChat():
         '''
         推送文本消息
         '''
-        messages = WeChat.set_geshi(message_list)[1]
+        # messages = WeChat.set_geshi(message_list)[1]
+        messages=message_list
         text_dict = {
             "touser": towxuser,
             "msgtype": "text",
@@ -135,5 +136,7 @@ class WeChat():
         access_token = self.get_access_token()
         json_str = json.dumps(dict)
         res = requests.post(
-            f"https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={access_token}", data=json_str,proxies=self.proxies)
+            f"https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={access_token}", 
+            data=json_str,
+            proxies=self.proxies)
         return json.loads(res.text)
