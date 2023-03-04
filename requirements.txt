@@ -2,5 +2,5 @@ func_timeout==4.3.5
 pycryptodomex==3.17
 PyYAML==6.0
 requests==2.28.2
-revChatGPT==3.0.5
+revChatGPT==3.0.9
 web.py==0.61
