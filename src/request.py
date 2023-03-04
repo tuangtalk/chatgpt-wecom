@@ -33,7 +33,6 @@ def sendtogpt(webinput,webdata):
             ask_bytes = ask.encode('utf-8')
             if len(ask_bytes) <= 2037:
                 message_list=str.lstrip(ask)
-                print(message_list)
                 print("[ chatgpt -> wecom ] " + message_list)
                 WeChat().send_text(message_list, wxuser)
                 exit()
