@@ -15,3 +15,5 @@ WEIXIN_PUSH:
   corpid: XXX
 WEXIN_PROXY: http://domain:port
 #WEXIN_PROXY为可选配置，配置登录微信推送所用的ip，企业bot可信ip里填的,VPS部署用户用不到可以删除
+BALANCE:
+  CKBALANCE: true
