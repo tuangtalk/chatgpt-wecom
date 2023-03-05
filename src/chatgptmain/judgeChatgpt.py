@@ -1,8 +1,6 @@
 from chatgptmain.judgeuser import Judgeuser
 
 class judgeChatpt():
-        
-
     def judgeChatptfuction(self,wxuser):
         print(wxuser)
         #在这一步执行Judgeuser进行判断

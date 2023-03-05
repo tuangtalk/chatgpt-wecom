@@ -1,0 +1,79 @@
+$def with(datajson)
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>balance</title>
+    <style>
+      body {
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 0;
+        margin-top: 10%;
+        padding: 0;
+      }
+      table {
+        background-color: #fff;
+        border-collapse: collapse;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        max-width: 100%;
+        overflow: hidden;
+        width: 80%;
+      }
+      th,
+      td {
+        /* border: 1px solid #ccc; */
+        padding: 10px;
+        text-align: center;
+        vertical-align: middle;
+      }
+      th {
+        background-color: #33cccc;
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      tr:hover {
+        background-color: #e6f7ff;
+      }
+      @media screen and (max-width: 600px) {
+        table {
+          width: 80%;
+        }
+        th,
+        td {
+          padding: 5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>企微用户</th>
+          <th>开始日期</th>
+          <th>截止日期</th>
+          <th>可用额度</th>
+        </tr>
+      </thead>
+      <tbody>
+        $for data in datajson:
+        <tr>
+          <td>$data</td>
+          <td>$datajson[data]["created"]</td>
+          <td>$datajson[data]["end"]</td>
+          <td>$datajson[data]["balance"]</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
