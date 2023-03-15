@@ -10,7 +10,7 @@
 
 - 多用户使用隔离,建议一个用户对应一个 api key(多个用户用一个 api key 有可能会有其他问题),api 的使用这是需要付费的(每个账户赠送的有 18 刀),如果想用久一点就一个 openai 账户一个密钥,
 - 支持上下文关联
-
+- 支持自定义 system_prompt(可选配置)
 - 支持用户清除上下文，开始新的对话,指令 ,微信用户输入`//新对话`
 - 除了企业微信需要固定 ip 来配置可信 ip vps 可以不用代理,nas 等无公网 ip 的用户需要配置`data.yml`中的`WEXIN_PROXY`
 - 支持查询 `openai api key` 的过期时间以及剩余额度,需要在 `data.yml` 配置相关参数
@@ -57,6 +57,7 @@ WEXIN_PROXY: http://domain:port
 #WEXIN_PROXY为可选配置，配置登录微信推送所用的ip，企业bot可信ip里填的,VPS部署用户用不到可以删除
 BALANCE:
   CKBALANCE: true
+SYSTEM_PROMPT: 你的名字是呆瓜, 一个无所不能的大型语言模型
 ```
 
 - <font color=black size=4>第一项:</font>
@@ -78,7 +79,7 @@ BALANCE:
   如图我的 http 代理为`http://127.0.0.1:223`对应的服务器 ip 为`54.xxx.xxx.xxx`我在企业微信中加入可信任 ip``54.xxx.xxx.xxx`即可,有关代理搭建 http 代理或者 sock 代理请善用搜索
   <a href="https://sm.ms/image/cgoDtn1ykmIA5au" target="_blank"><img src="https://s2.loli.net/2023/03/05/cgoDtn1ykmIA5au.png" ></a>
   <a href="https://sm.ms/image/cz7yPgkrJLl2I1q" target="_blank"><img src="https://s2.loli.net/2023/02/10/cz7yPgkrJLl2I1q.png" ></a>
-- <font color=black size=4>第五:</font>
+- <font color=black size=4>第五项目:</font>
   可以查询 data.yml 中 api key 的用量信息,默认为关闭状态,需要在 data.yml 配置
 
   ```yml
@@ -89,6 +90,13 @@ BALANCE:
   true 为开启,false 为关闭,开启后浏览器输入`yourdomin:port/balance`
   比如我的是`http://127.0.0.1:6364/balance`
   <a href="https://sm.ms/image/n1WAeTuYjF2UcLB" target="_blank"><img src="https://s2.loli.net/2023/03/05/n1WAeTuYjF2UcLB.png" ></a>
+
+- <font color=black size=4>第六项目:</font>
+  可以自定义 system_prompt，为可选配置，不需要这一项可以删掉，例如
+
+  ```yml
+  SYSTEM_PROMPT: 你的名字是呆瓜, 一个无所不能的大型语言模型
+  ```
 
 - 清空上下文指令 ,微信用户输入`//新对话`
 

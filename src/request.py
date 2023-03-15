@@ -13,6 +13,11 @@ def sendtogpt(webinput,webdata):
             if question == "//新对话":
                 botloaded,panduan=Judgeuser(wxuser)
                 botloaded.newChatgpt(wxuser)
+                if botloaded.chatbot is False:
+                    botloaded.deleteuser(wxuser)
+                    message_list=str.lstrip("请联系管理员为你配置账户")
+                    WeChat().send_text(message_list, wxuser)
+                    exit()
                 botloaded.chatbot
                 message_list=str.lstrip("上下文已清除，以下是新的对话")
                 WeChat().send_text(message_list, wxuser)
@@ -24,6 +29,7 @@ def sendtogpt(webinput,webdata):
                 try:
                     botloaded,panduan=Judgeuser(wxuser)
                     botloaded.newChatgpt(wxuser)
+                    print("timeout try again")
                     ask=Chatgptwx().send_gpt(question, wxuser, botloaded.chatbot)
                 except func_timeout.exceptions.FunctionTimedOut as e:
                     message_list=str.lstrip("超时请联系管理员")

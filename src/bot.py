@@ -10,7 +10,6 @@ class MyApplication(web.application):
     def run(self, port=6364, *middleware):
         func = self.wsgifunc(*middleware)
         return web.httpserver.runsimple(func, ('0.0.0.0', port))
-
 render=web.template.render('src/chatgptmain')
 class balance:
     def GET(self):

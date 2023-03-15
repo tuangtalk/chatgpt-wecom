@@ -17,4 +17,6 @@ class Judgeuser():
    def newChatgpt(self,wxuser):
         newchatbot=Chatgptwx().NewChatgptFromeuser(wxuser)
         self.chatbot=newchatbot
-    
+
+   def deleteuser(cls,name):
+        del cls._loaded[name]
