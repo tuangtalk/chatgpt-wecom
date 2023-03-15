@@ -17,3 +17,4 @@ WEXIN_PROXY: http://domain:port
 #WEXIN_PROXY为可选配置，配置登录微信推送所用的ip，企业bot可信ip里填的,VPS部署用户用不到可以删除
 BALANCE:
   CKBALANCE: true
+#SYSTEM_PROMPT: 你的名字是呆瓜, 一个无所不能的大型语言模型
