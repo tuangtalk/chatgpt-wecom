@@ -6,6 +6,11 @@
 
 > 该版本基于`acheong08的reChatGPT`开发，
 
+---
+### Sponsor
+
+The CDN acceleration and security protection for this project are sponsored by <a href="https://www.tencentcloud.com/products/edgeone" target="_blank"><img src="https://static.edgeone.com/logo/edgeone-logo-light.svg" alt="Tencent EdgeOne" style="height: 28px; vertical-align: middle;"></a>
+
 #### 实现的功能
 
 - 多用户使用隔离,建议一个用户对应一个 api key(多个用户用一个 api key 有可能会有其他问题),api 的使用这是需要付费的(每个账户赠送的有 18 刀),如果想用久一点就一个 openai 账户一个密钥,
