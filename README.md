@@ -1,5 +1,7 @@
 # chatgpt-WeCom
 
+### The CDN acceleration and security protection for this project are sponsored by <a href="https://www.tencentcloud.com/products/edgeone" target="_blank"><img src="https://edgeone.ai/_next/static/media/headLogo.daeb48ad.png?auto=format&fit=max&w=384" alt="Tencent EdgeOne" style="height: 28px; vertical-align: middle;"></a>
+
 ### V0.2 版本使用 acheong08 的 ChatGPT V3，实现了企业微信与 ChatGPT 聊天。
 
 ### 这个版本使用的 chatgpt 开放的 gpt-3.5-turbo，v0.11 和 V.14 版本教程请看 wiki 文件夹
