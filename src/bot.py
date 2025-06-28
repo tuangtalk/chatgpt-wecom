@@ -6,6 +6,7 @@ urls = (
     '/api', 'Request',
     '/balance', 'balance'
 )
+
 class MyApplication(web.application):
     def run(self, port=6364, *middleware):
         func = self.wsgifunc(*middleware)
