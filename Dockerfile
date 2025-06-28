@@ -8,6 +8,7 @@ RUN /bin/bash -c "source activate test"
 
 # Copy directory into the container
 COPY . /root/chatgpt-wecom
+
 RUN cd /root/chatgpt-wecom && \
     pip install -r requirements.txt
 
