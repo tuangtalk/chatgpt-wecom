@@ -11,7 +11,6 @@
 ---
 ### Sponsor
 
-The CDN acceleration and security protection for this project are sponsored by <a href="https://www.tencentcloud.com/products/edgeone" target="_blank"><img src="https://edgeone.ai/_next/static/media/headLogo.daeb48ad.png?auto=format&fit=max&w=384" alt="Tencent EdgeOne" style="height: 28px; vertical-align: middle;"></a>
 
 #### 实现的功能
 
